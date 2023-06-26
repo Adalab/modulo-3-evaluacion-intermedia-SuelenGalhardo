@@ -1,6 +1,3 @@
-//seccion import
-// react , archivos proprios, sass, imagens
-
 import '../styles/App.scss';
 //import data from '../data/data.json';
 import { useState } from 'react';
@@ -40,7 +37,7 @@ function App() {
           <label htmlFor=''>Filtrar por frase:</label>
           <input type='text' />
 
-          <label for='personaje'>Filtrar por Personaje</label>
+          <label htmlFor='personaje'>Filtrar por Personaje</label>
           <select name='personaje' id=''>
             <option value=''>todos</option>
             <option value='Joey'>Joey</option>
@@ -49,7 +46,7 @@ function App() {
             <option value='Ross'>Ross</option>
           </select>
         </form>
-        <ul>{renderContactlist}</ul>
+        <ul>{renderContactlist()}</ul>
       </main>
     </div>
   );
