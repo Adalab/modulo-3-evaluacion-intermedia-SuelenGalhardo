@@ -7,6 +7,7 @@ function App() {
   const [contactList, setContactList] = useState([]);
   const [filterQuote, setFilterQuote] = useState('');
   const [filterCharacter, setFilterChatacter] = useState('all');
+  const [newQuote, setNewQoute] =useState ({});
 
   useEffect(() => {
     fetch(
@@ -22,6 +23,19 @@ function App() {
     setFilterChatacter(ev.target.value);
   };
 
+  const handleClick = () => {
+    setContactList([...contactList, newQuote]);
+    setNewQoute ({
+    //  quote;
+     // character;
+
+    });
+  }
+  //  ... newQuote es l copia
+  const handleNewQuote = (ev) => {
+    setNewQoute({...newQuote, [ev.target.name] : ev.target.value});
+  }
+
   const handleQuote = (ev) => {
     setFilterQuote(ev.target.value);
   };
@@ -31,10 +45,15 @@ function App() {
   //filter simpre antes del map,
   const renderContactlist = () => {
     return contactList
-      .filter((element) => element.quote.toLowerCase.incluides(filterQuote.toLowerCase()))
-      .filter(element) => {
-        
-      }
+      .filter (element) => 
+      element.quote.toLowerCase.incluides(filterQuote.toLowerCase())
+      .filter((element) => {
+        if (filterCharacter === 'all') {
+          return true;
+        } else {
+          return element.character === filterCharacter;
+        }
+      })
       .map((element, index) => (
         <li key={index}>
           <h4>{element.quote}</h4>
@@ -65,9 +84,19 @@ function App() {
           </select>
         </form>
         <ul>{renderContactlist()}</ul>
+       
+        <form action="">
+        <label htmlFor=''>Frase</label>
+          <input type='text'name='quote' onInput={handleNewQuote} value={newQuote.quote}/>
+          <label htmlFor=''>Personaje</label>
+          <input type='text'name='character' onInput={handleNewQuote} value={newQuote.character}/>
+          <button onClick={handleClick}>Añadir la nueva frase</button>
+        </form>
+    
       </main>
     </div>
   );
-}
+
+ }
 
 export default App;
