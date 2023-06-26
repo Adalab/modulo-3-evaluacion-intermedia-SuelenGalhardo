@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 
 function App() {
   const [contactList, setContactList] = useState([]);
+  const [nameSearch, setNameSearch] = useState('');
 
   useEffect(() => {
     fetch(
@@ -15,6 +16,8 @@ function App() {
         setContactList(data);
       });
   }, []);
+
+  // const handleSeach
 
   const renderContactlist = () => {
     return contactList.map((eachQuote, index) => (
@@ -35,7 +38,7 @@ function App() {
       <main>
         <form action=''>
           <label htmlFor=''>Filtrar por frase:</label>
-          <input type='text' />
+          <input type='text' value={nameSearch} onInput={handleSeach} />
 
           <label htmlFor='personaje'>Filtrar por Personaje</label>
           <select name='personaje' id=''>
