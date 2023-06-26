@@ -3,21 +3,30 @@
 
 import '../styles/App.scss';
 import data from '../data/data.json';
-import { useState } from 'react';
+//import { useState } from 'react';
 
 function App() {
-  const [contactList, setContactList] = useState(data);
+  // const [contactList, setContactList] = useState(data);
   return (
     <div>
-      <main>
+      <header>
         <h1>Frase de Friends</h1>
-        <input type='text' />
-        filtrar por frase:
-        <select name='select'>
-          <option value=''></option>
-          <option value=''></option>
-          <option value=''></option>
-        </select>
+      </header>
+      <main>
+        <form action=''>
+          <label htmlFor=''>Filtrar por frase:</label>
+          <input type='text' />
+
+          <label for='personaje'>Filtrar por Personaje</label>
+          <select name='personaje' id=''>
+            <option value=''>todos</option>
+            <option value='Joey'>Joey</option>
+            <option value='Phoebe'>Phoebe</option>
+            <option value='Rachel'>Rachel</option>
+            <option value='Ross'>Ross</option>
+          </select>
+        </form>
+        <ul></ul>
       </main>
     </div>
   );
