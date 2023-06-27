@@ -26,8 +26,8 @@ function App() {
   const handleClick = () => {
     setContactList([...contactList, newQuote]);
     setNewQoute({
-      //  quote;
-      // character;
+      quote: '',
+      character: '',
     });
   };
   //  ... newQuote es l copia
@@ -43,39 +43,48 @@ function App() {
   //para pintar una lista, hay que hacer un map, simpre, henderizar
   //filter simpre antes del map,
   const renderContactlist = () => {
-    return contactList
-      .filter(
-        (element) => element.quote.toLowerCase().incluides(filterQuote.toLowerCase())
-        //&& element.character.incluides(filterCharacter) de esta forma te ahorras el otro filter
-      )
-      .filter((element) => {
-        return element.character.incluides(filterCharacter);
-        /*if (filterCharacter === 'all') {
+    return (
+      contactList
+        .filter(
+          (element) => element.quote.toLowerCase().includes(filterQuote.toLowerCase())
+          //&& element.character.incluides(filterCharacter) de esta forma te ahorras el otro filter
+        )
+        .filter((element) => {
+          return element.character.includes(filterCharacter);
+          /*if (filterCharacter === 'all') {
           return true;
         } else {
           return element.character === filterCharacter;
         }*/
-      })
-      .map((element, index) => (
-        <li key={index}>
-          <h4>{element.quote}</h4>
-          <span>{element.character}</span>
-        </li>
-      ));
+        })
+        //import data from '../data/data.json';
+        .map((element, index) => (
+          <li key={index}>
+            <h4>{element.quote}</h4>
+            <span>{element.character}</span>
+          </li>
+        ))
+    );
   };
+
+  //  .map(  (element, index)    =>  {  return <li }      )
 
   return (
     <div>
-      <header>
-        <h1>Frase de Friends</h1>
+      <header className='header'>
+        <h1 className='header__title'>Frase de Friends</h1>
       </header>
-      <main>
-        <form action=''>
-          <label htmlFor=''>Filtrar por frase:</label>
-          <input type='text' value={filterQuote} onInput={handleQuote} />
+      <main className='main'>
+        <form className='main__form' action=''>
+          <label className='main__label' htmlFor=''>
+            Filtrar por frase:
+          </label>
+          <input className='main__input' type='text' value={filterQuote} onInput={handleQuote} />
 
-          <label htmlFor='personaje'>Filtrar por Personaje</label>
-          <select name='personaje' id='' onChange={handleCharacter}>
+          <label className='main__label' htmlFor='personaje'>
+            Filtrar por Personaje
+          </label>
+          <select className='main__select' name='personaje' id='' onChange={handleCharacter}>
             <option value='all'>todos</option>
             <option value='Joey'>Joey</option>
             <option value='Phoebe'>Phoebe</option>
@@ -85,14 +94,32 @@ function App() {
             <option value='Chandler'>Chandler</option>
           </select>
         </form>
-        <ul>{renderContactlist()}</ul>
+        <ul className='main__list'>{renderContactlist()}</ul>
 
-        <form action=''>
-          <label htmlFor=''>Frase</label>
-          <input type='text' name='quote' onInput={handleNewQuote} value={newQuote.quote} />
-          <label htmlFor=''>Personaje</label>
-          <input type='text' name='character' onInput={handleNewQuote} value={newQuote.character} />
-          <button onClick={handleClick}>Añadir la nueva frase</button>
+        <form className='formTwo' action=''>
+          <label className='formTwo__label' htmlFor=''>
+            Frase
+          </label>
+          <input
+            className='formTwo__input'
+            type='text'
+            name='quote'
+            onInput={handleNewQuote}
+            value={newQuote.quote}
+          />
+          <label className='formTwo__label' htmlFor=''>
+            Personaje
+          </label>
+          <input
+            className='formTwo__input'
+            type='text'
+            name='character'
+            onInput={handleNewQuote}
+            value={newQuote.character}
+          />
+          <button className='formTwo__button' onClick={handleClick}>
+            Añadir la nueva frase
+          </button>
         </form>
       </main>
     </div>
