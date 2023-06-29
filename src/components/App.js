@@ -1,7 +1,9 @@
 import '../styles/App.scss';
 //import data from '../data/data.json';
+import imgFriends from '../images/sofafriends.jpg';
 import { useState } from 'react';
 import { useEffect } from 'react';
+//import LocalStorage from '../services/locaStorage';
 
 function App() {
   const [contactList, setContactList] = useState([]);
@@ -72,9 +74,11 @@ function App() {
   return (
     <div>
       <header className='header'>
-        <h1 className='header__title'>Frase de Friends</h1>
+        <img className='header__img' src={imgFriends} alt='' />
       </header>
+
       <main className='main'>
+        <h1 className='header__title'>Frase de Friends</h1>
         <form className='main__form' action=''>
           <label className='main__label' htmlFor=''>
             Filtrar por frase:
@@ -122,6 +126,9 @@ function App() {
           </button>
         </form>
       </main>
+      <footer className='footer'>
+        <p className='footer__text'>Adalab 2023 © Friens</p>
+      </footer>
     </div>
   );
 }
