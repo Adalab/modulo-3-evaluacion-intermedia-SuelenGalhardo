@@ -1,0 +1,42 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 200px;
+  margin: 20px;
+
+  &__section {
+    font-family: cursive;
+  }
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  &__li {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 5px;
+
+    border: solid 2px green;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  }
+  &__label {
+    color: #be1919;
+    padding: 15px;
+  }
+  &__input {
+  }
+  &__button {
+    margin: 20px 0;
+    padding: 16px 16px;
+    width: px;
+    list-style: none;
+    border-radius: 12px;
+    border: 1px solid #be1919;
+    background-color: rgb(172, 98, 29);
+    color: #fff;
+  }
+}

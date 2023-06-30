@@ -1,0 +1,20 @@
+.header {
+  padding: 10px 10px 10px;
+  text-align: center;
+
+  font-family: cursive;
+  font-style: italic;
+  font-weight: 900;
+
+  &__img {
+    width: 30%;
+  }
+
+  &__title {
+    color: gray;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 5px;
+  }
+}
