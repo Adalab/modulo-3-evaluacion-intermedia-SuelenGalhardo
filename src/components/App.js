@@ -75,20 +75,31 @@ function App() {
     <div>
       <header className='header'>
         <img className='header__img' src={imgFriends} alt='' />
+        <h1 className='header__title'>Frase de Friends</h1>
       </header>
 
       <main className='main'>
-        <h1 className='header__title'>Frase de Friends</h1>
         <form className='main__form' action=''>
-          <label className='main__label' htmlFor=''>
+          <label className='main__label' htmlFor='filter'>
             Filtrar por frase:
           </label>
-          <input className='main__input' type='text' value={filterQuote} onInput={handleQuote} />
+          <input
+            className='main__input'
+            type='text'
+            id='filter'
+            value={filterQuote}
+            onInput={handleQuote}
+          />
 
-          <label className='main__label' htmlFor='personaje'>
+          <label className='main__label' htmlFor='personajeF'>
             Filtrar por Personaje
           </label>
-          <select className='main__select' name='personaje' id='' onChange={handleCharacter}>
+          <select
+            className='main__select'
+            name='personaje'
+            id='personajeF'
+            onChange={handleCharacter}
+          >
             <option value='all'>todos</option>
             <option value='Joey'>Joey</option>
             <option value='Phoebe'>Phoebe</option>
@@ -101,22 +112,25 @@ function App() {
         <ul className='main__list'>{renderContactlist()}</ul>
 
         <form className='formTwo' action=''>
-          <label className='formTwo__label' htmlFor=''>
-            Frase
+          <label className='formTwo__label' htmlFor='frase'>
+            {' '}
+            Añade la Frase
           </label>
           <input
             className='formTwo__input'
             type='text'
+            id='frase'
             name='quote'
             onInput={handleNewQuote}
             value={newQuote.quote}
           />
-          <label className='formTwo__label' htmlFor=''>
-            Personaje
+          <label className='formTwo__label' htmlFor='personaje'>
+            Añade el Personaje
           </label>
           <input
             className='formTwo__input'
             type='text'
+            id='personaje'
             name='character'
             onInput={handleNewQuote}
             value={newQuote.character}
