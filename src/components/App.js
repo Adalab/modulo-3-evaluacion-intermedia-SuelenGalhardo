@@ -73,7 +73,7 @@ function App() {
     <div>
       <header className='header'>
         <img className='header__img' src={imgFriends} alt='' />
-        <h1 className='header__title'>Frase de Friends</h1>
+        <h1 className='header__title'>Frases de Friends</h1>
       </header>
 
       <main className='main'>
@@ -114,6 +114,7 @@ function App() {
         </section>
         <section className='main__section'>
           <form className='' action=''>
+            <h1 className='main__title'>Añadir una nueva frase </h1>
             <label className='main__label' htmlFor='frase'>
               {' '}
               Añade la Frase
