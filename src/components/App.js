@@ -44,28 +44,22 @@ function App() {
   //para pintar una lista, hay que hacer un map, simpre, henderizar
   //filter simpre antes del map,
   const renderContactlist = () => {
-    return (
-      contactList
-        .filter(
-          (element) => element.quote.toLowerCase().includes(filterQuote.toLowerCase())
-          //&& element.character.incluides(filterCharacter) de esta forma te ahorras el otro filter
-        )
-        .filter((element) => {
-          return element.character.includes(filterCharacter);
-          /*if (filterCharacter === 'all') {
+    return contactList
+      .filter((element) => element.quote.toLowerCase().includes(filterQuote.toLowerCase()))
+      .filter((element) => {
+        if (filterCharacter === 'all') {
           return true;
         } else {
-          return element.character === filterCharacter;
-        }*/
-        })
-        //import data from '../data/data.json';
-        .map((element, index) => (
-          <li className='main__li' key={index}>
-            <h4>{element.quote}</h4>
-            <span>{element.character}</span>
-          </li>
-        ))
-    );
+          return element.character.includes(filterCharacter);
+        }
+      })
+
+      .map((element, index) => (
+        <li className='main__li' key={index}>
+          <h4>{element.quote}</h4>
+          <span>{element.character}</span>
+        </li>
+      ));
   };
 
   return (
