@@ -1,5 +1,5 @@
 import '../styles/App.scss';
-//import data from '../data/data.json';
+
 import imgFriends from '../images/sofafriends.jpg';
 import { useState } from 'react';
 import { useEffect } from 'react';
@@ -9,7 +9,7 @@ function App() {
   const [contactList, setContactList] = useState([]);
   const [filterQuote, setFilterQuote] = useState('');
   const [filterCharacter, setFilterChatacter] = useState('all');
-  const [newQuote, setNewQoute] = useState({});
+  const [newQuote, setNewQuote] = useState({});
 
   useEffect(() => {
     fetch(
@@ -24,21 +24,20 @@ function App() {
   const handleCharacter = (ev) => {
     setFilterChatacter(ev.target.value);
   };
-
-  const handleClick = () => {
-    setContactList([...contactList, newQuote]);
-    setNewQoute({
-      quote: '',
-      character: '',
-    });
+  const handleQuote = (ev) => {
+    setFilterQuote(ev.target.value);
   };
   //  ... newQuote es l copia
   const handleNewQuote = (ev) => {
-    setNewQoute({ ...newQuote, [ev.target.name]: ev.target.value });
+    setNewQuote({ ...newQuote, [ev.target.name]: ev.target.value });
   };
-
-  const handleQuote = (ev) => {
-    setFilterQuote(ev.target.value);
+  const handleClick = (ev) => {
+    ev.preventDefault();
+    setContactList([...contactList, newQuote]);
+    setNewQuote({
+      quote: '',
+      character: '',
+    });
   };
 
   // const handleSeach
@@ -116,7 +115,6 @@ function App() {
           <form className='' action=''>
             <h1 className='main__title'>Añadir una nueva frase </h1>
             <label className='main__label' htmlFor='frase'>
-              {' '}
               Añade la Frase
             </label>
             <input
@@ -128,7 +126,7 @@ function App() {
               value={newQuote.quote}
             />
             <label className='main__label' htmlFor='personaje'>
-              Añade el Personaje
+              Añade el Personaje:
             </label>
             <input
               className='main__input'
@@ -139,7 +137,7 @@ function App() {
               value={newQuote.character}
             />
             <button className='main__button' onClick={handleClick}>
-              Añadir la nueva frase
+              Añadir la nueva frase:
             </button>
           </form>
         </section>
